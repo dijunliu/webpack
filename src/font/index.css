@@ -1,0 +1,10 @@
+body{
+    background: #f00;
+    font-family: "webfont";
+    font-size: 30px;
+}
+@font-face {
+    font-family: 'webfont';
+    font-display: swap;
+    src: url('webfont.woff2') format('woff2'); 
+}
