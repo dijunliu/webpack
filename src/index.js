@@ -8,6 +8,6 @@ console.log(pic);
 
 const img = new Image()
 img.src = pic
-const root = document.getElemenById("root")
+const root = document.getElementById("root")
 root.append(img)
 
