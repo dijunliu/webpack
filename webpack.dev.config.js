@@ -63,6 +63,11 @@ module.exports = {
     },
     //* 关联打包后的main.js文件与src下各js文件，错误定位
     devtool: "eval-source-map",
+    devServer: {
+        contentBase: "./build",
+        port: 8081,
+        open: true
+    },
     plugins: [
         //* 使用html模板插件动态生成构建后的index.js入口页面
         new htmlWebpackPlugin({
