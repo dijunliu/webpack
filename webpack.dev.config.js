@@ -66,7 +66,12 @@ module.exports = {
     devServer: {
         contentBase: "./build",
         port: 8081,
-        open: true
+        open: true,
+        proxy:{
+            "/api":{
+                target:"http://localhost:9092"
+            }
+        }
     },
     plugins: [
         //* 使用html模板插件动态生成构建后的index.js入口页面
