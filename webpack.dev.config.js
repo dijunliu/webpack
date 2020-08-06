@@ -4,6 +4,7 @@ const path = require("path")
 const htmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const webpack = require("webpack")
 
 module.exports = {
     entry: "./src/index.js",
@@ -67,9 +68,10 @@ module.exports = {
         contentBase: "./build",
         port: 8081,
         open: true,
-        proxy:{
-            "/api":{
-                target:"http://localhost:9092"
+        hotOnly: true,
+        proxy: {
+            "/api": {
+                target: "http://localhost:9092"
             }
         }
     },
@@ -84,6 +86,8 @@ module.exports = {
         //* 提取css作为独立文件输出，配合MiniCssExtractPlugin.loader
         new MiniCssExtractPlugin({
             filename: "[name]_[chunkhash:8].css"
-        })
+        }),
+        // 模块刷新，而非页面刷新
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
