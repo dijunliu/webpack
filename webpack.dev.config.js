@@ -59,7 +59,17 @@ module.exports = {
                     "postcss-loader",
                     "less-loader"
                 ]
-            }
+            },
+            // {
+            //     test: /\.js$/,
+            //     use: [{
+            //         loader: "babel-loader",
+            //         options: {
+            //             preset: ["@babel/preset-env"]
+            //         }
+            //     }]
+
+            // }
         ]
     },
     //* 关联打包后的main.js文件与src下各js文件，错误定位

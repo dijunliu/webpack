@@ -30,8 +30,24 @@
 //     document.body.append(d)
 // }
 
-import number from "./number"
-import counter from "./counter"
+// import number from "./number"
+// import counter from "./counter"
 
-counter()
-number()
+// counter()
+// number()
+
+// // HRM 手动监听JS模块
+// // 确定是否开启hot
+// if (module.hot) {
+//     //配置监听的文件以及回调函数
+//     module.hot.accept("./number.js", function () {
+//         document.body.removeChild(document.getElementById("number"))
+//         number()
+//     })
+// }
+
+const arr = [new Promise(() => { }), new Promise(() => { })]
+
+arr.map(item => {
+    console.log(item);
+})
