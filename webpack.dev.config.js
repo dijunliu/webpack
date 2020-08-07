@@ -7,11 +7,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const webpack = require("webpack")
 
 module.exports = {
-    entry: "./src/index.js",
+    // 定义多个entry索引
+    entry: {
+        index:"./src/index.js",
+        list:"./src/list.js"
+    },
     output: {
         //must absolute path
         path: path.resolve(__dirname, "./build"),
-        filename: "main.js"
+        // 定义不同输出文件
+        filename: "[name]_main.js"
     },
     mode: "development",
     //各种模块（格式）文件加载规则
@@ -60,20 +65,20 @@ module.exports = {
                     "less-loader"
                 ]
             },
-            // {
-            //     test: /\.js$/,
-            //     use: [{
-            //         loader: "babel-loader",
-            //         options: {
-            //             preset: ["@babel/preset-env"]
-            //         }
-            //     }]
+            {
+                test: /\.js$/,
+                // 非转换文件夹
+                exclude:/node_modules/,
+                use: {
+                    // 使用loader连接webpack与babel
+                    loader: "babel-loader",
+                }
 
-            // }
+            }
         ]
     },
     //* 关联打包后的main.js文件与src下各js文件，错误定位
-    devtool: "eval-source-map",
+    devtool: "source-map",
     devServer: {
         contentBase: "./build",
         port: 8081,
@@ -87,9 +92,16 @@ module.exports = {
     },
     plugins: [
         //* 使用html模板插件动态生成构建后的index.js入口页面
+        // 输出多个html页面，每个页面由chunks确定载入的js文件（entry中定义）数组
         new htmlWebpackPlugin({
             template: "./src/index.html",
-            filename: "ldj.html"
+            filename: "index.html",
+            chunks:["index","list"]
+        }),
+        new htmlWebpackPlugin({
+            template: "./src/index.html",
+            filename: "list.html",
+            chunks:"list"
         }),
         //* 清空output.path内的文件
         new CleanWebpackPlugin(),

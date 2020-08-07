@@ -1,3 +1,4 @@
+
 // import { add } from './other'
 // const m = require('./index.json')
 // import pic from './1.png'
@@ -49,5 +50,16 @@
 const arr = [new Promise(() => { }), new Promise(() => { })]
 
 arr.map(item => {
-    console.log(item);
+    console.log(0);
 })
+
+// import React, { Component } from "react"
+// import ReactDom from "react-dom"
+
+// class APP extends Component{
+//     render(){
+//         return <div>hello react</div>
+//     }
+// }
+
+// ReactDom.render(<APP/>,document.getElementById("app"))

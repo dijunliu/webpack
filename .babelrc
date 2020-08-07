@@ -1,0 +1,20 @@
+
+{
+    "presets": [
+        //类似对象的方式配置preset-env，usage按需加载
+        [
+            "@babel/preset-env",
+            {
+                "targets":{
+                    "edge":"17",
+                    "chrome":"62",
+                    "ie":"10"
+                },
+                "corejs":2,
+                "useBuiltIns":"usage"
+            }
+        ],
+
+            "@babel/preset-react"
+    ]
+}
