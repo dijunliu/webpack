@@ -96,12 +96,12 @@ module.exports = {
         new htmlWebpackPlugin({
             template: "./src/index.html",
             filename: "index.html",
-            chunks:["index","list"]
+            chunks:["index"]
         }),
         new htmlWebpackPlugin({
             template: "./src/index.html",
             filename: "list.html",
-            chunks:"list"
+            chunks:["list"]
         }),
         //* 清空output.path内的文件
         new CleanWebpackPlugin(),
